@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -8,7 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { CheckSquare, Github, Google } from "lucide-react";
+import { CheckSquare, Github, Mail } from "lucide-react";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ const Auth = () => {
   });
   
   useEffect(() => {
-    // Update mode when URL query param changes
     const newMode = queryParams.get("mode") === "signup" ? "signup" : "login";
     setMode(newMode);
   }, [location, queryParams]);
@@ -43,7 +41,6 @@ const Auth = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate authentication process
     setTimeout(() => {
       setIsLoading(false);
       
@@ -197,7 +194,7 @@ const Auth = () => {
                   variant="outline"
                   onClick={() => handleSocialLogin("Google")}
                 >
-                  <Google className="mr-2 h-4 w-4" />
+                  <Mail className="mr-2 h-4 w-4" />
                   Google
                 </Button>
                 <Button
