@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -35,9 +34,9 @@ const Index = () => {
               </div>
               <div className="rounded-lg overflow-hidden shadow-xl animate-slide-in bg-white p-4">
                 <img
-                  src="https://source.unsplash.com/photo-1488590528505-98d2b5aba04b"
+                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
                   alt="TaskFlow Dashboard"
-                  className="rounded-md w-full h-auto"
+                  className="rounded-md w-full h-auto object-cover"
                 />
               </div>
             </div>
