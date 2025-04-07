@@ -1,8 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { Check, BarChart2, Zap } from "lucide-react";
+import { Check, BarChart2, Zap, MessageCircle } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
 
 const Index = () => {
   return (
@@ -88,6 +88,58 @@ const Index = () => {
                 <p className="text-muted-foreground">
                   Collaborate effectively with team members using real-time updates.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Us Section */}
+        <section id="contact" className="py-16 sm:py-24 bg-background">
+          <div className="container px-4 mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                Get in Touch
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Have questions or need help? Contact our team and we'll get back to you shortly.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="bg-accent p-8 rounded-lg shadow-sm">
+                <div className="flex items-center mb-6">
+                  <div className="h-12 w-12 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center mr-4">
+                    <MessageCircle className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Contact Information</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground mb-1">Email</p>
+                    <p className="text-foreground">support@taskflow.com</p>
+                  </div>
+                  
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground mb-1">Phone</p>
+                    <p className="text-foreground">+1 (555) 123-4567</p>
+                  </div>
+                  
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground mb-1">Address</p>
+                    <p className="text-foreground">123 Productivity Ave, Suite 456<br />San Francisco, CA 94107</p>
+                  </div>
+                  
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground mb-1">Business Hours</p>
+                    <p className="text-foreground">Monday - Friday: 9AM - 5PM PST</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border border-border p-8 rounded-lg shadow-sm bg-card">
+                <h3 className="text-xl font-semibold mb-6">Send Us a Message</h3>
+                <ContactForm />
               </div>
             </div>
           </div>
