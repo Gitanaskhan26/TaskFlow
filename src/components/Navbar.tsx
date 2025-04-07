@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, BarChart, CheckSquare, Home, LogIn } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,14 +20,14 @@ const Navbar = () => {
   };
   
   return (
-    <header className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+    <header className="bg-background border-b border-border fixed w-full top-0 z-50">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
             <div className="h-8 w-8 rounded-md bg-brand-600 flex items-center justify-center mr-2">
               <CheckSquare className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">TaskFlow</span>
+            <span className="text-xl font-bold text-foreground">TaskFlow</span>
           </Link>
         </div>
         
@@ -37,7 +38,7 @@ const Navbar = () => {
               key={item.name}
               to={item.href}
               className={`flex items-center text-sm font-medium transition-colors hover:text-brand-600 ${
-                isActive(item.href) ? "text-brand-600" : "text-gray-600"
+                isActive(item.href) ? "text-brand-600" : "text-muted-foreground"
               }`}
             >
               <item.icon className="h-4 w-4 mr-1" />
@@ -46,8 +47,9 @@ const Navbar = () => {
           ))}
         </div>
         
-        {/* Authentication buttons */}
+        {/* Authentication buttons and theme toggle */}
         <div className="hidden md:flex items-center space-x-2">
+          <ThemeToggle />
           <Link to="/auth">
             <Button variant="outline" className="flex items-center">
               <LogIn className="h-4 w-4 mr-1" />
@@ -60,7 +62,8 @@ const Navbar = () => {
         </div>
         
         {/* Mobile menu button */}
-        <div className="flex md:hidden">
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
           <Button 
             variant="ghost" 
             size="icon"
@@ -77,7 +80,7 @@ const Navbar = () => {
       
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden animate-fade-in">
+        <div className="md:hidden animate-fade-in bg-background">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navigation.map((item) => (
               <Link
@@ -85,8 +88,8 @@ const Navbar = () => {
                 to={item.href}
                 className={`flex items-center px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.href)
-                    ? "bg-brand-50 text-brand-600"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "bg-accent text-brand-600"
+                    : "text-muted-foreground hover:bg-accent"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
