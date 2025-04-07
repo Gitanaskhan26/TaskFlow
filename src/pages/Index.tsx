@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { Check, BarChart2, Zap, MessageCircle } from "lucide-react";
+import { Check, BarChart2, Zap, MessageCircle, Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
 const Index = () => {
@@ -165,18 +165,102 @@ const Index = () => {
         </section>
       </main>
 
-      {/* Footer */}
+      {/* Footer with Social Links */}
       <footer className="bg-card text-foreground py-8 border-t border-border">
         <div className="container px-4 mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="h-8 w-8 rounded-md bg-brand-600 flex items-center justify-center mr-2">
-                <Check className="h-5 w-5 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Brand and tagline */}
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <div className="h-8 w-8 rounded-md bg-brand-600 flex items-center justify-center mr-2">
+                  <Check className="h-5 w-5 text-white" />
+                </div>
+                <span className="text-xl font-bold">TaskFlow</span>
               </div>
-              <span className="text-xl font-bold">TaskFlow</span>
+              <p className="text-muted-foreground">
+                Making team productivity simple and intuitive.
+              </p>
+            </div>
+            
+            {/* Quick links */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium">Quick Links</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <Link to="/dashboard" className="text-muted-foreground hover:text-brand-600 transition-colors">
+                  Dashboard
+                </Link>
+                <Link to="/tasks" className="text-muted-foreground hover:text-brand-600 transition-colors">
+                  Tasks
+                </Link>
+                <Link to="/auth" className="text-muted-foreground hover:text-brand-600 transition-colors">
+                  Sign In
+                </Link>
+                <Link to="#contact" className="text-muted-foreground hover:text-brand-600 transition-colors">
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+            
+            {/* Social Links */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium">Connect With Us</h3>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="rounded-full bg-card p-2 border border-border hover:bg-accent hover:text-brand-600 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={18} />
+                </a>
+                <a 
+                  href="https://twitter.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="rounded-full bg-card p-2 border border-border hover:bg-accent hover:text-brand-600 transition-colors"
+                  aria-label="Twitter"
+                >
+                  <Twitter size={18} />
+                </a>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="rounded-full bg-card p-2 border border-border hover:bg-accent hover:text-brand-600 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={18} />
+                </a>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="rounded-full bg-card p-2 border border-border hover:bg-accent hover:text-brand-600 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={18} />
+                </a>
+                <a 
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="rounded-full bg-card p-2 border border-border hover:bg-accent hover:text-brand-600 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Github size={18} />
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
+            <div className="text-sm text-muted-foreground mb-4 md:mb-0">
+              &copy; {new Date().getFullYear()} TaskFlow. All rights reserved.
             </div>
             <div className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} TaskFlow. All rights reserved.
+              <a href="#" className="hover:text-brand-600 transition-colors mr-4">Privacy Policy</a>
+              <a href="#" className="hover:text-brand-600 transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
