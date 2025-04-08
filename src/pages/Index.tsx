@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -259,8 +260,8 @@ const Index = () => {
               &copy; {new Date().getFullYear()} TaskFlow. All rights reserved.
             </div>
             <div className="text-sm text-muted-foreground">
-              <a href="#" className="hover:text-brand-600 transition-colors mr-4">Privacy Policy</a>
-              <a href="#" className="hover:text-brand-600 transition-colors">Terms of Service</a>
+              <Link to="/privacy-policy" className="hover:text-brand-600 transition-colors mr-4">Privacy Policy</Link>
+              <Link to="#" className="hover:text-brand-600 transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>
