@@ -1,11 +1,11 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import TaskCard, { Task } from "@/components/TaskCard";
 import TaskForm from "@/components/TaskForm";
 import { toast } from "sonner";
-import { Plus, Search } from "lucide-react";
+import { Plus, Search, Link } from "lucide-react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -27,7 +27,6 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 
-// Mock data for demo
 const mockTasks: Task[] = [
   {
     id: "1",
@@ -107,7 +106,6 @@ const Tasks = () => {
   const [activeTab, setActiveTab] = useState<string>("all");
 
   useEffect(() => {
-    // Simulate API call to load tasks
     const loadTasks = () => {
       setTimeout(() => {
         setTasks(mockTasks);
@@ -120,10 +118,8 @@ const Tasks = () => {
   }, []);
 
   useEffect(() => {
-    // Apply filters
     let result = [...tasks];
     
-    // Search term filter
     if (searchTerm) {
       result = result.filter(
         (task) =>
@@ -132,17 +128,14 @@ const Tasks = () => {
       );
     }
     
-    // Status filter (from dropdown)
     if (statusFilter !== "all") {
       result = result.filter((task) => task.status === statusFilter);
     }
     
-    // Priority filter
     if (priorityFilter !== "all") {
       result = result.filter((task) => task.priority === priorityFilter);
     }
     
-    // Tab filter - overrides status filter from dropdown
     if (activeTab !== "all") {
       result = tasks.filter((task) => task.status === activeTab);
     }
@@ -162,7 +155,6 @@ const Tasks = () => {
 
   const handleSubmitTask = (taskData: Omit<Task, 'id'> & { id?: string }) => {
     if (taskData.id) {
-      // Update existing task
       setTasks(prevTasks =>
         prevTasks.map(task =>
           task.id === taskData.id ? { ...taskData, id: task.id } as Task : task
@@ -170,7 +162,6 @@ const Tasks = () => {
       );
       toast.success("Task updated successfully");
     } else {
-      // Create new task
       const newTask = {
         ...taskData,
         id: Date.now().toString(),
@@ -207,17 +198,22 @@ const Tasks = () => {
               <h1 className="text-3xl font-bold text-gray-900">Tasks</h1>
               <p className="text-gray-600 mt-1">Manage and organize your tasks</p>
             </div>
-            <Button 
-              onClick={handleCreateTask} 
-              className="mt-4 md:mt-0 bg-brand-600 hover:bg-brand-700"
-            >
-              <Plus className="mr-1 h-4 w-4" /> Add New Task
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-2 mt-4 md:mt-0">
+              <RouterLink to="/integrations">
+                <Button variant="outline" className="bg-brand-50">
+                  <Link className="mr-1 h-4 w-4" /> Integrations
+                </Button>
+              </RouterLink>
+              <Button 
+                onClick={handleCreateTask} 
+                className="bg-brand-600 hover:bg-brand-700"
+              >
+                <Plus className="mr-1 h-4 w-4" /> Add New Task
+              </Button>
+            </div>
           </div>
           
-          {/* Filters */}
           <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Search */}
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
               <Input
@@ -228,7 +224,6 @@ const Tasks = () => {
               />
             </div>
             
-            {/* Status filter */}
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger>
                 <SelectValue placeholder="Filter by status" />
@@ -241,7 +236,6 @@ const Tasks = () => {
               </SelectContent>
             </Select>
             
-            {/* Priority filter */}
             <Select value={priorityFilter} onValueChange={setPriorityFilter}>
               <SelectTrigger>
                 <SelectValue placeholder="Filter by priority" />
@@ -255,7 +249,6 @@ const Tasks = () => {
             </Select>
           </div>
           
-          {/* Tabs */}
           <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="mb-6">
             <TabsList>
               <TabsTrigger value="all">All ({tasks.length})</TabsTrigger>
@@ -265,7 +258,6 @@ const Tasks = () => {
             </TabsList>
           </Tabs>
           
-          {/* Tasks List */}
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((item) => (
@@ -304,7 +296,6 @@ const Tasks = () => {
         </div>
       </main>
 
-      {/* Task Form Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
